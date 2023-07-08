@@ -1,5 +1,20 @@
 //select the html element
 const data = document.querySelector("#data");
+let cityName = "London"
+
+//get data from form in html
+const textInput = document.querySelector("#cityName")
+const postForm =  document.querySelector('#postForm');
+postForm.addEventListener('submit', event => {
+  event.preventDefault();
+
+  //change the cityname variable with the user submitted city name
+  cityName = textInput.value
+  console.log(cityName)
+});
+
+
+
 
 
 //fetch options (init)
