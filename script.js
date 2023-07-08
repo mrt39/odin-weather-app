@@ -1,6 +1,9 @@
 //select the html element
 const data = document.querySelector("#data");
 const weatherIcon = document.querySelector("#icon");
+const displayCityName = document.querySelector("#displayCityName");
+const temperature = document.querySelector("#q1temperature");
+//default cityname to display on page
 let cityName = "London"
 
 //get data from form in html
@@ -11,7 +14,8 @@ postForm.addEventListener('submit', event => {
 
   //change the cityname variable with the user submitted city name
   cityName = textInput.value
-  console.log(cityName)
+  //make a query to weather app with the input city name
+  fetchFromWeatherApp(cityName)
 });
 
 
@@ -26,19 +30,23 @@ const myInit = {
   };
 
 //function for getting data from weather app
-async function fetchFromWeatherApp(){
+async function fetchFromWeatherApp(cityNameQuery){
     try {
-        let response = await fetch('https://api.weatherapi.com/v1/current.json?key=d7d59f3ee4bf4019a8f195722230407&q=london', myInit)
+        let response = await fetch(`https://api.weatherapi.com/v1/current.json?key=d7d59f3ee4bf4019a8f195722230407&q=${cityNameQuery}`, myInit)
         if (!response.ok) {
           throw new Error("Network response was not OK");
         }
         //turn the responese into json
         let json = await response.json();
-        //append it to the page
+
+        //append the city name to the page
+        displayCityName.innerHTML = json.location.name
+        //append the temperature to the page
+        temperature.innerHTML = json.current.temp_c + " °C"
+        //append the weather text to the page
         data.innerHTML = json.current.condition.text
-      //append the icon to the page
+        //append the icon to the page
         weatherIcon.src = "http:" + json.current.condition.icon 
-        console.log(json.current.condition.icon)
       } 
       
       catch (error) {
@@ -47,4 +55,4 @@ async function fetchFromWeatherApp(){
 }
   
 
-fetchFromWeatherApp()
+fetchFromWeatherApp(cityName)
