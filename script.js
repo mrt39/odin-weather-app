@@ -1,5 +1,6 @@
 //select the html element
 const data = document.querySelector("#data");
+const weatherIcon = document.querySelector("#icon");
 let cityName = "London"
 
 //get data from form in html
@@ -35,6 +36,9 @@ async function fetchFromWeatherApp(){
         let json = await response.json();
         //append it to the page
         data.innerHTML = json.current.condition.text
+      //append the icon to the page
+        weatherIcon.src = "http:" + json.current.condition.icon 
+        console.log(json.current.condition.icon)
       } 
       
       catch (error) {

@@ -1,19 +1,54 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<!doctype html>
+<html lang="en" class="h-100" data-bs-theme="auto">
+  <head>
     <title>Weather App</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+  
+
+    <link href="https://getbootstrap.com/docs/5.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+
+
     
-    <div id="data"></div>
+    <!-- Custom styles for this template -->
+    <link href="cover.css" rel="stylesheet">
+  </head>
+  
+  <body class="d-flex h-100 text-center text-bg-dark">
+   
 
-    <form id="postForm" method="post">
-        <label for="cityName">Enter City Name:</label>
-        <input id ="cityName" name="cityName" type="text">
-        <button type="submit">Submit</button>
-    </form>
+    
+<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+  <header class="mb-auto">
+    <div>
+      <h3 class="float-md-start mb-0">Weather App</h3>
+      <nav class="nav nav-masthead justify-content-center float-md-end">
 
-    <script src="script.js"></script>
-</body>
+        <form id="postForm" method="post">
+            <div class="input-group">
+              <input class="form-control" id ="cityName" name="cityName" type="text" placeholder="City Name">
+              <button type="submit" class="btn btn-secondary">Search</button>
+            </div>
+          </form>
+
+      </nav>
+    </div>
+  </header>
+
+  <main class="px-3">
+    <h1 id="displayCityName"></h1>
+    <p class="lead"  id="data">
+
+    </p>
+    <p class="lead">
+       <img id= "icon" src="" alt="">
+    </p>
+  </main>
+
+  <footer class="mt-auto text-white-50">
+    <p>Weather App by mrt39</p>
+        <p>Template from <a href="https://getbootstrap.com/" class="text-white">Bootstrap</a>, by <a href="https://twitter.com/mdo" class="text-white">@mdo</a></p>
+  </footer>
+</div>
+
+<script src="script.js"></script>
+    </body>
 </html>
